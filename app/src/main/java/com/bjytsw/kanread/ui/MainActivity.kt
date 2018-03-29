@@ -13,17 +13,19 @@ import com.bjytsw.kanread.ui.base.MvpActivity
 import com.bjytsw.kanread.ui.base.mvp.IPresenter
 import com.bjytsw.kanread.ui.base.mvp.IView
 import com.bjytsw.kanread.ui.contract.MainContract
+import com.bjytsw.kanread.ui.contract.SplashContract
 import com.bjytsw.kanread.ui.presenter.MainPresenter
+import com.bjytsw.kanread.ui.presenter.SplashPresenter
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity : MvpActivity<IPresenter<IView>>(), MainContract.View, NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : MvpActivity<MainContract.View, MainPresenter>(), MainContract.View, NavigationView.OnNavigationItemSelectedListener {
 
     var newsViewPageAdapter = NewsViewPageAdapter(supportFragmentManager)
 
-    override fun onLoadPresenter(): IPresenter<IView> {
-        return MainPresenter() as IPresenter<IView>
+    override fun onLoadPresenter(): MainPresenter {
+        return MainPresenter()
     }
 
     override fun initView(savedInstanceState: Bundle?) {

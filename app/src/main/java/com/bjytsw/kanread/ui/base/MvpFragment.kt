@@ -7,26 +7,26 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bjytsw.kanread.R
+import com.bjytsw.kanread.ui.base.mvp.BasePresenter
 import com.bjytsw.kanread.ui.base.mvp.IPresenter
 import com.bjytsw.kanread.ui.base.mvp.IView
 
 
 
-abstract class MvpFragment<P : IPresenter<IView>> : Fragment(), IView {
+abstract class MvpFragment<V : IView, P : BasePresenter<V>> : Fragment(){
 
     lateinit var mPresenter: P
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         mPresenter = onLoadPresenter()
-        mPresenter?.attachView(this)
+        mPresenter?.attachView(this as V)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         var view: View = inflater.inflate(R.layout.abc_list_menu_item_layout, null, false)
         initView(view)
         initData()
-        mPresenter?.start()
         return view
     }
 

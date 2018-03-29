@@ -11,10 +11,10 @@ import com.bjytsw.kanread.ui.base.mvp.IView
 import com.bjytsw.kanread.ui.contract.SplashContract
 import com.bjytsw.kanread.ui.presenter.SplashPresenter
 
-class SplashActivity : MvpActivity<IPresenter<IView>>(), SplashContract.View{
+class SplashActivity : MvpActivity<SplashContract.View, SplashPresenter>(), SplashContract.View{
 
-    override fun onLoadPresenter(): IPresenter<IView> {
-        return SplashPresenter() as IPresenter<IView>
+    override fun onLoadPresenter(): SplashPresenter {
+        return SplashPresenter()
     }
 
     override fun initView(savedInstanceState: Bundle?) {
@@ -26,7 +26,7 @@ class SplashActivity : MvpActivity<IPresenter<IView>>(), SplashContract.View{
     }
 
     override fun initData() {
-
+        mPresenter.start()
     }
 
     override fun startActivity(){

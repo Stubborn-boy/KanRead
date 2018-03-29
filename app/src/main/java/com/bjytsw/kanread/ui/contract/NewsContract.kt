@@ -12,6 +12,6 @@ class NewsContract {
 
     interface Model : IModel
 
-    interface Presenter : IPresenter<View>
+    interface Presenter : IPresenter<IView>
 
 }

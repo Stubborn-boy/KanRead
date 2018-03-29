@@ -14,6 +14,6 @@ class SplashContract {
 
     interface Model : IModel
 
-    interface Presenter : IPresenter<View>
+    interface Presenter : IPresenter<IView>
 
 }
