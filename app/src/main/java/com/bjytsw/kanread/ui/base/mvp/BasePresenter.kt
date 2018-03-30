@@ -1,7 +1,7 @@
 package com.bjytsw.kanread.ui.base.mvp
 
 
- abstract class BasePresenter<T : IView> : IPresenter{
+abstract class BasePresenter<T : IView> : IPresenter{
 
     var view: T? = null
         protected set
