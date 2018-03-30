@@ -6,15 +6,13 @@ import android.view.Window
 import android.view.WindowManager
 import com.bjytsw.kanread.R
 import com.bjytsw.kanread.ui.base.MvpActivity
-import com.bjytsw.kanread.ui.base.mvp.IPresenter
-import com.bjytsw.kanread.ui.base.mvp.IView
 import com.bjytsw.kanread.ui.contract.SplashContract
 import com.bjytsw.kanread.ui.presenter.SplashPresenter
 
-class SplashActivity : MvpActivity<SplashContract.View, SplashPresenter>(), SplashContract.View{
+class SplashActivity : MvpActivity<SplashPresenter>(), SplashContract.View{
 
     override fun onLoadPresenter(): SplashPresenter {
-        return SplashPresenter()
+        return SplashPresenter(this)
     }
 
     override fun initView(savedInstanceState: Bundle?) {

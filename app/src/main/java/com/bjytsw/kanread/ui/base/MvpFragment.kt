@@ -8,19 +8,18 @@ import android.view.View
 import android.view.ViewGroup
 import com.bjytsw.kanread.R
 import com.bjytsw.kanread.ui.base.mvp.BasePresenter
-import com.bjytsw.kanread.ui.base.mvp.IPresenter
 import com.bjytsw.kanread.ui.base.mvp.IView
 
 
 
-abstract class MvpFragment<V : IView, P : BasePresenter<V>> : Fragment(){
+abstract class MvpFragment<P : BasePresenter<*>> : Fragment(), IView{
 
     lateinit var mPresenter: P
 
     override fun onAttach(context: Context?) {
         super.onAttach(context)
         mPresenter = onLoadPresenter()
-        mPresenter?.attachView(this as V)
+        mPresenter?.attachView(this)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

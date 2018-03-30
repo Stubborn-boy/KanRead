@@ -12,8 +12,10 @@ class SplashContract {
         fun startActivity()
     }
 
-    interface Model : IModel
+    interface Model : IModel{
+        fun loadData(): Long
+    }
 
-    interface Presenter : IPresenter<IView>
+    interface Presenter : IPresenter
 
 }

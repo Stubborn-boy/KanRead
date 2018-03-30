@@ -10,8 +10,10 @@ class MainContract {
 
     interface View : IView
 
-    interface Model : IModel
+    interface Model : IModel{
+        fun loadData()
+    }
 
-    interface Presenter : IPresenter<IView>
+    interface Presenter : IPresenter
 
 }

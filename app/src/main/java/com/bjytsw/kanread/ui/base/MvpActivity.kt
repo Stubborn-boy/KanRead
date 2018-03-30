@@ -3,19 +3,18 @@ package com.bjytsw.kanread.ui.base
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.bjytsw.kanread.ui.base.mvp.BasePresenter
-import com.bjytsw.kanread.ui.base.mvp.IModel
 import com.bjytsw.kanread.ui.base.mvp.IView
 
 
 
-abstract class MvpActivity<V : IView, P : BasePresenter<V>> : AppCompatActivity(){
+abstract class MvpActivity<P : BasePresenter<*>> : AppCompatActivity(), IView{
 
     lateinit var mPresenter: P
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mPresenter = onLoadPresenter()
-        mPresenter?.attachView(this as V)
+        mPresenter?.attachView(this)
         initView(savedInstanceState)
         initData()
     }

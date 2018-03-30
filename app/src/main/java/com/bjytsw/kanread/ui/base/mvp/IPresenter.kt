@@ -1,8 +1,7 @@
 package com.bjytsw.kanread.ui.base.mvp
 
-import com.bjytsw.kanread.ui.base.MvpActivity
 
-interface IPresenter<T : IView> {
-    fun attachView(view: T)
+interface IPresenter {
+    fun attachView(view: IView)
     fun detachView()
 }
